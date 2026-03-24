@@ -15,13 +15,15 @@
 # car1.info()
 
 class student:
-    marks_list = []
-    def __init__(self,name,marks):
+    
+    def __init__(self,name):
+        self.marks_list = []
         self.name = name
         for i in range(4):
-            if marks == 0 and marks > 100:
-                print("Invalid marks. Please enter marks between 0 and 100.")   
             marks = int(input("Enter student marks: "))
+            if marks < 0 or marks > 100:
+                print("Invalid marks. Please enter marks between 0 and 100.")
+                break   
             self.marks_list.append(marks)
 
         self.marks = marks
@@ -33,8 +35,12 @@ class student:
         return average
     
     def total_marks(self):
-        return sum(self.marks_list)
+        return sum(self.marks_list) 
 
-student1 = student("John", 0)
+student1 = student("John" )
 print(f"{student1.name}'s average marks: {student1.avg_marks()}")
 print(f"{student1.name}'s total marks: {student1.total_marks()}")
+
+student2 = student("Alice" )
+print(f"{student2.name}'s average marks: {student2.avg_marks()}")       
+print(f"{student2.name}'s total marks: {student2.total_marks()}")
